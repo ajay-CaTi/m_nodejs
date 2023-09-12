@@ -6,50 +6,53 @@ const products = data.products;
 const express = require("express");
 const app = express();
 const PORT = 4000;
-// const morgan = require("morgan");
 
+//middleware
 app.use(express.json());
-// third party middleware
-// app.use(morgan("default"));
 app.use(express.static("public"));
 
-// CREATE APi
-app.post("/products", (req, res) => {
+const createProduct = (req, res) => {
   products.push(req.body);
   const id = +req.body.id;
   const product = products.find((p) => p.id === id);
   res.status(200).json({ id: product });
-});
+};
+// CREATE APi
+app.post("/products", createProduct);
 
-// :Api root, base url, google.com/api/v2/
-// READ Get /products
-app.get("/products", (req, res) => {
+const getAppProducts = (req, res) => {
   console.log(req.params);
   res.json(products);
-});
+};
+// READ Get /products
+app.get("/products", getAppProducts);
 
-app.get("/products/:id", (req, res) => {
+const getProdById = (req, res) => {
   const id = +req.params.id;
   const product = products.find((p) => p.id === id);
   res.json(product);
-});
+};
+// READ get products
+app.get("/products/:id", getProdById);
 
-// UPDATE API
-app.put("/products/:id", (req, res) => {
+const updateProd = (req, res) => {
   const id = +req.params.id;
   const productIndex = products.findIndex((p) => p.id === id);
   products.splice(productIndex, 1, { ...req.body, id: id });
   res.status(201).json();
-});
+};
+// UPDATE API
+app.put("/products/:id", updateProd);
 
-// UPDATE API patch
-app.patch("/products/:id", (req, res) => {
+const updateByPatch = (req, res) => {
   const id = +req.params.id;
   const productIndex = products.findIndex((p) => p.id === id);
   const product = products[productIndex];
   products.splice(productIndex, 1, { ...product, ...req.body });
   res.status(201).json();
-});
+};
+// UPDATE API patch
+app.patch("/products/:id", updateByPatch);
 
 // DELETE APi
 app.delete("/products/:id", (req, res) => {
@@ -61,8 +64,6 @@ app.delete("/products/:id", (req, res) => {
 });
 
 app.get("/demo", (req, res) => {
-  // res.send("Hello express");
-  // res.file("pathHere");
   res.json(products);
 });
 
