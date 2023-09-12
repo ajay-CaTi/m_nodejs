@@ -36,13 +36,9 @@ const auth = (req, res, next) => {
   }
 };
 
-// Apply on whole app , not good practice
-app.use(auth);
+// Apply on whole app , not good practice, apply over a route
 
-// API, endpoint, Route
-
-// app.use() // App level middleware
-app.get("/", (req, res) => {
+app.get("/", auth, (re, res) => {
   res.json({ type: "get", data: `${new Date()}` });
 });
 

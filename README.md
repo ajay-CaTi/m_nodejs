@@ -48,6 +48,8 @@ app.listen(3000);
 
 # next -- Callback argument to the middleware function, called "next" by convention.
 
+# next will be called with either the rejected value or the thrown Error.
+
 res.send() // HTML
 res.sendFile() // file
 res.json() // json
