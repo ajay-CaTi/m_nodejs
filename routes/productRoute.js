@@ -10,12 +10,12 @@ const {
 } = require("../controller/product");
 
 router
-  .post("/products", createProduct)
-  .get("/products", getAppProducts)
-  .get("/products/:id", getProdById)
-  .put("/products/:id", updateProd)
-  .patch("/products/:id", updateByPatch)
-  .delete("/products/:id", deleteProd)
+  .post("/", createProduct)
+  .get("/", getAppProducts)
+  .get("/:id", getProdById)
+  .put("/:id", updateProd)
+  .patch("/:id", updateByPatch)
+  .delete("/:id", deleteProd)
   .get("/demo", (req, res) => {
     res.json(products);
   });
