@@ -73,6 +73,12 @@ res.send() // HTML
 res.sendFile() // file
 res.json() // json
 
+# MVC
+
+- MOdel is data (data driven webApp)
+- View frontend part
+- Controller how model goes to view, view changes model, controller manage operations between model and view
+
 #
 
 Course Content :
