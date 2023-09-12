@@ -10,7 +10,7 @@ const morgan = require("morgan");
 
 app.use(express.json());
 // third party middleware
-app.use(morgan("dev"));
+app.use(morgan("default"));
 app.use(express.static("public"));
 
 // app.use((req, res, next) => {
