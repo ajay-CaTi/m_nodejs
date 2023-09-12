@@ -7,14 +7,10 @@ const express = require("express");
 const app = express();
 const PORT = 4000;
 
-// middleware
-// const requestTime = function (req, res, next) {
-//   req.requestTime = Date.now();
-//   next();
-// };
-// app.use(requestTime);
+// bodyParser PURANA plugin need to import But now it is default in express just use express.json() to understand body
+app.use(express.static("public")); // below / is not work because static hosting is above level and serve files directly through this folder
+app.use(express.json());
 
-// app.use() // Server level middleware
 app.use((req, res, next) => {
   console.log(
     req.get("User-Agent"),
@@ -28,8 +24,8 @@ app.use((req, res, next) => {
 
 // auth middleware
 const auth = (req, res, next) => {
-  console.log(req.query.password);
-  if (req.query.password === "123") {
+  // console.log(req.query.password); // auth depends on req.query
+  if (req.body.password === "123") {
     next();
   } else {
     res.sendStatus(401);

@@ -50,6 +50,17 @@ app.listen(3000);
 
 # next will be called with either the rejected value or the thrown Error.
 
+# bodyParser PURANA plugin need to import But now it is default in express just use express.json()
+
+# Static hosting built with static middle ware like
+
+app.use(express.static("public"));
+public flder me /index.html or /data.json en file ko access kerne me koi server nterfarance nahi h
+
+- express.static serves static assets such as HTML files, images, and so on.
+- express.json parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
+- express.urlencoded parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
+
 res.send() // HTML
 res.sendFile() // file
 res.json() // json
