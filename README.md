@@ -10,7 +10,47 @@ response.setHeader() allows you only to set a singular header.
 
 response.writeHead() will allow you to set pretty much everything about the response head including status code, content, and multiple headers.
 
-const t2 = performance.now();
+# Parameters: It accepts three parameters as mentioned above and described below:
+
+statusCode <number>: It accepts the status codes that are of number type.
+statusMessage <string>: It accepts any string that shows the status message.
+headers <Object>: It accepts any function, array, or string.
+
+# const t2 = performance.now();
+
+# What is buffer vs stream in node JS?
+
+- A buffer is a temporary memory that a stream takes to hold some data until it is consumed.
+
+- A buffer is a space in memory (typically RAM) that stores binary data. In Node. js, we can access these spaces of memory with the built-in Buffer class. Buffers store a sequence of integers, similar to an array in JavaScript. Unlike arrays, you cannot change the size of a buffer once it is created.
+
+# What is middleware?
+
+Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application’s request-response cycle. The next function is a function in the Express router which, when invoked, executes the middleware succeeding the current middleware.
+
+Middleware functions can perform the following tasks:
+
+Execute any code.
+Make changes to the request and the response objects.
+End the request-response cycle.
+Call the next middleware in the stack.
+
+If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging.
+
+var express = require('express'); var app = express();
+app.get('/', function(req, res, next) { next());
+})
+app.listen(3000);
+
+# // this function(res, res, next) is middleware
+
+# .get HTTP method for which the middleware function applies.# / Path (route) for which the middleware function applies.
+
+# next -- Callback argument to the middleware function, called "next" by convention.
+
+res.send() // HTML
+res.sendFile() // file
+res.json() // json
 
 Course Content :
 00:00:00 Course RoadMap
