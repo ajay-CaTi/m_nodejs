@@ -25,18 +25,19 @@ app.use(express.static("public"));
 // });
 
 // auth middleware
+// console.log(req.query.password); // /?password=123 auth depends on req.query
 const auth = (req, res, next) => {
-  // console.log(req.query.password); // auth depends on req.query
-  if (req.body.password === "123") {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
+  // if (req.body.password === "123") {
+  //   next();
+  // } else {
+  //   res.sendStatus(401);
+  // }
+  next();
 };
 
-// Apply on whole app , not good practice, apply over a route
-
-app.get("/", auth, (re, res) => {
+// :id url parameter
+app.get("/product/:id", auth, (req, res) => {
+  console.log(req.params);
   res.json({ type: "get", data: `${new Date()}` });
 });
 

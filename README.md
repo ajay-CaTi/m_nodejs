@@ -30,10 +30,16 @@ Middleware functions are functions that have access to the request object (req),
 
 Middleware functions can perform the following tasks:
 
-Execute any code.
-Make changes to the request and the response objects.
-End the request-response cycle.
-Call the next middleware in the stack.
+- Execute any code.
+- Make changes to the request and the response objects.
+- End the request-response cycle.
+- Call the next middleware in the stack.
+
+# 3 ways to send data
+
+- URL
+- QUERY
+- DATA
 
 If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging.
 
@@ -66,6 +72,8 @@ public flder me /index.html or /data.json en file ko access kerne me koi server 
 res.send() // HTML
 res.sendFile() // file
 res.json() // json
+
+#
 
 Course Content :
 00:00:00 Course RoadMap
