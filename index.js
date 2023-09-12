@@ -6,21 +6,23 @@ const products = data.products;
 const express = require("express");
 const app = express();
 const PORT = 4000;
+const morgan = require("morgan");
 
-// bodyParser PURANA plugin need to import But now it is default in express just use express.json() to understand body
-app.use(express.static("public")); // below / is not work because static hosting is above level and serve files directly through this folder
 app.use(express.json());
+// third party middleware
+app.use(morgan("dev"));
+app.use(express.static("public"));
 
-app.use((req, res, next) => {
-  console.log(
-    req.get("User-Agent"),
-    new Date(),
-    req.method,
-    req.ip,
-    req.hostname
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(
+//     req.get("User-Agent"),
+//     new Date(),
+//     req.method,
+//     req.ip,
+//     req.hostname
+//   );
+//   next();
+// });
 
 // auth middleware
 const auth = (req, res, next) => {

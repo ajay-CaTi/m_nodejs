@@ -57,6 +57,8 @@ app.listen(3000);
 app.use(express.static("public"));
 public flder me /index.html or /data.json en file ko access kerne me koi server nterfarance nahi h
 
+# static hosting is above level and serve files directly through this folder
+
 - express.static serves static assets such as HTML files, images, and so on.
 - express.json parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
 - express.urlencoded parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
