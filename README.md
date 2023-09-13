@@ -155,6 +155,10 @@ Each file in Node is called module
 Peviously node support common js( require ) module
 but now it also support EJS module
 
+# Mongodb 
+mongodb do not have validation
+mongoose have validation as Schema
+
 # git
 
 git init

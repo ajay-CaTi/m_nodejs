@@ -1,13 +1,16 @@
 const fs = require("fs");
-// const index = fs.readFileSync("index.html", "utf-8");
-const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
-const products = data.products;
+const model = require("../model/product");
+const Product = model.Product;
 
-exports.createProduct = (req, res) => {
-  products.push(req.body);
-  const id = +req.body.id;
-  const product = products.find((p) => p.id === id);
-  res.status(200).json({ id: product });
+exports.createProduct = async (req, res) => {
+  const product = new Product();
+  product.title = "phoneX";
+  product.price = 999;
+  product.ratings = 5;
+  await product.save(); // to save data in db
+  console.log(product);
+  res.status(201).json(product);
+  // res.status(201).json(req.body);
 };
 
 exports.getAppProducts = (req, res) => {
