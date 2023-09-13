@@ -1,12 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const PORT = 4000;
 const productRouter = require("./routes/productRoute");
 const userRouter = require("./routes/userRoute");
 
 //middleware
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(process.env.PUBLIC_DIR));
 app.use("/products", productRouter.router);
 app.use("/users", userRouter.router);
 
@@ -17,6 +17,6 @@ app.use("/users", userRouter.router);
 // UPDATE API patch
 // DELETE APi
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server started`);
 });
