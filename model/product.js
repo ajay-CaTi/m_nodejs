@@ -3,14 +3,27 @@ const { Schema } = require("mongoose");
 
 // Schema
 const productSchema = new Schema({
-  title: String,
+  title: { type: String, required: true, unique: true },
   description: String,
-  price: Number,
-  discountPercentage: Number,
-  ratings: Number,
-  brand: String,
-  category: String,
-  thumbnail: String,
+  price: {
+    type: Number,
+    min: [0, "wrong price"],
+    required: true,
+  },
+  discountPercentage: {
+    type: Number,
+    min: [0, "wrong min discount"],
+    max: [50, "wrong max discount"],
+  },
+  ratings: {
+    type: Number,
+    min: [0, "wrong min rating"],
+    max: [5, "wrong max rating"],
+    default: 0,
+  },
+  brand: { type: String, required: true },
+  category: { type: String, required: true },
+  thumbnail: { type: String, required: true },
   images: [String],
 });
 

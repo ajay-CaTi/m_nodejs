@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   createProduct,
-  getAppProducts,
+  getAllProducts,
   getProdById,
   updateProd,
   updateByPatch,
@@ -11,7 +11,7 @@ const {
 
 router
   .post("/", createProduct)
-  .get("/", getAppProducts)
+  .get("/", getAllProducts)
   .get("/:id", getProdById)
   .put("/:id", updateProd)
   .patch("/:id", updateByPatch)
